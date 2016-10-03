@@ -9,15 +9,16 @@ This means highly modularized, extensible, and otherwise fairly opinionated. Our
 first priority is serving Glider Labs apps before making this a general use
 framework.
 
-## Current Status
+# Pre-release Install
 
-At this moment it is housing the dev runner / harness used by several apps. Next
-major addition would be templates for creating new Gosper projects. Over time,
-development tools and workflows used by projects will be encoded here.
+We're not yet cutting releases of Gosper and its packages. To install the Gosper
+CLI, from your `GOPATH` run:
 
-## Packages
+```
+$ go get -u github.com/gliderlabs/gosper
+```
 
-Each project may have its own `pkg` directory for potentially re-useable Go
-packages. Common packages live at `github.com/gliderlabs/pkg`, including `com`.
-However, packages dependent on Gosper structure and opinionated uses of those
-shared packages would live in the `pkg` directory here for now.
+# packages
+# docs
+# glide
+# release
