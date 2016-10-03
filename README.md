@@ -12,9 +12,19 @@ framework.
 # Pre-release Install
 
 We're not yet cutting releases of Gosper and its packages. To install the Gosper
-CLI, clone the repo and `make install`. You'll need
-[Go](http://www.golangbootcamp.com/book/get_setup) and
+CLI, clone the repo and:
+
+```
+$ make install
+```
+
+You'll need [Go](http://www.golangbootcamp.com/book/get_setup) and
 [Glide](https://glide.sh/) installed, so perhaps run `brew bundle` first.
+
+# Slack
+
+Join [Glider Labs Slack](http://glider-slackin.herokuapp.com/) and the `#gosper`
+channel to talk about the project.
 
 # License
 
