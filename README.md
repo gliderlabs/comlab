@@ -12,13 +12,10 @@ framework.
 # Pre-release Install
 
 We're not yet cutting releases of Gosper and its packages. To install the Gosper
-CLI, from your `GOPATH` run:
+CLI, clone the repo and `make install`. You'll need
+[Go](http://www.golangbootcamp.com/book/get_setup) and
+[Glide](https://glide.sh/) installed, so perhaps run `brew bundle` first.
 
-```
-$ go get -u github.com/gliderlabs/gosper
-```
+# License
 
-# packages
-# docs
-# glide
-# release
+MIT
