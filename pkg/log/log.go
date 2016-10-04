@@ -91,9 +91,19 @@ func (l *logger) log(typ int, fields []interface{}) {
 	for _, field := range fields {
 		e = l.processField(e, field)
 	}
+
 	for o, _ := range l.observers {
-		o.Log(e)
+		o.Log(clone(e))
 	}
+}
+
+func clone(e Event) Event {
+	c := Event{e.Type, e.Time, Fields{}, []string{}}
+	copy(c.Index, e.Index)
+	for k := range e.Fields {
+		c.Fields[k] = e.Fields[k]
+	}
+	return c
 }
 
 func (l *logger) processField(e Event, field interface{}) Event {
