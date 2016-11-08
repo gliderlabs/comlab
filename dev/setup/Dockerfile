@@ -8,4 +8,4 @@ ENV GOPATH /usr/local
 RUN curl -LSs https://glide.sh/get | sh
 COPY . /usr/local/src/github.com/gliderlabs/comlab
 WORKDIR /usr/local/src/github.com/gliderlabs/comlab
-RUN make install
+RUN make install && comlab

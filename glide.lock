@@ -1,10 +1,10 @@
-hash: baea05944afada9b29e5c0a041a5687afb2b2eff5324718c302251a96ef46782
-updated: 2016-10-03T15:21:50.930704754-05:00
+hash: ebe861f9a97c1247d0195893f32924c0afaac17272dfb9daf63a4a7358ff90a2
+updated: 2016-11-08T16:54:35.898036747-06:00
 imports:
 - name: github.com/fsnotify/fsnotify
-  version: c07fd863aee264025aa0ef438bf9d2046c803493
+  version: fd9ec7deca8bf46ecd2a795baaacf2b3a9be1197
 - name: github.com/hashicorp/hcl
-  version: ef8133da8cda503718a74741312bf50821e6de79
+  version: f74cf8281543a0797d7b4ab7d88e76e7ba125308
   subpackages:
   - hcl/ast
   - hcl/parser
@@ -25,13 +25,13 @@ imports:
 - name: github.com/mgutz/ansi
   version: c286dcecd19ff979eeb73ea444e479b903f2cfcb
 - name: github.com/mitchellh/mapstructure
-  version: ca63d7c062ee3c9f34db231e352b60012b4fd0c1
+  version: f3009df150dadf309fdee4a54ed65c124afad715
 - name: github.com/pelletier/go-buffruneio
   version: df1e16fde7fc330a0ca68167c23bf7ed6ac31d6d
 - name: github.com/pelletier/go-toml
   version: 45932ad32dfdd20826f5671da37a5f3ce9f26a8d
 - name: github.com/pkg/errors
-  version: 839d9e913e063e28dfd0e6c7b7512793e0a48be9
+  version: 248dadf4e9068a0b3e79f02ed0a610d935de5302
 - name: github.com/pkg/sftp
   version: 4d0e916071f68db74f8a73926335f809396d6b42
 - name: github.com/rjeczalik/notify
@@ -44,28 +44,28 @@ imports:
 - name: github.com/spf13/cast
   version: 2580bc98dc0e62908119e4737030cc2fdfc45e4c
 - name: github.com/spf13/cobra
-  version: 9c28e4bbd74e5c3ed7aacbc552b2cab7cfdfe744
+  version: 6e91dded25d73176bf7f60b40dd7aa1f0bf9be8d
 - name: github.com/spf13/jwalterweatherman
   version: 33c24e77fb80341fe7130ee7c594256ff08ccc46
 - name: github.com/spf13/pflag
-  version: c7e63cf4530bcd3ba943729cee0efeff2ebea63f
+  version: 5ccb023bc27df288a957c5e994cd44fd19619465
 - name: github.com/spf13/viper
-  version: 382f87b929b84ce13e9c8a375a4b217f224e6c65
+  version: 651d9d916abc3c3d6a91a12549495caba5edffd2
 - name: github.com/thejerf/suture
   version: fe1c0d795ff7a7e54fc54ef6afb36ee0adf0c276
 - name: golang.org/x/crypto
-  version: 484eb34681af59703e639b971bc307019182c41f
+  version: 9477e0b78b9ac3d0b03822fd95422e2fe07627cd
   subpackages:
   - ssh
   - curve25519
   - ed25519
   - ed25519/internal/edwards25519
 - name: golang.org/x/sys
-  version: 8f0908ab3b2457e2e15403d3697c9ef5cb4b57a9
+  version: 9a2e24c3733eddc63871eda99f253e2db29bd3b9
   subpackages:
   - unix
 - name: golang.org/x/text
-  version: 098f51fb687dbaba1f6efabeafbb6461203f9e21
+  version: a8b38433e35b65ba247bb267317037dee1b70cea
   subpackages:
   - transform
   - unicode/norm

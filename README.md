@@ -1,17 +1,15 @@
-# Gosper
+# Comlab
 
-Glider Labs app framework and development utility.
+Glider Labs app toolkit and development utility for component-oriented Go
+applications.
 
-Gosper is a tool for setting up and developing Golang apps (optionally with React)
-based on [github.com/gliderlabs/pkg/com](https://github.com/gliderlabs/pkg/tree/master/com).
-
-This means highly modularized, extensible, and otherwise fairly opinionated. Our
-first priority is serving Glider Labs apps before making this a general use
-framework.
+Comlab gives you highly modularized, more reusable, and very extensible
+application code. Our first priority is serving Glider Labs apps before making
+this a general use project.
 
 # Pre-release Install
 
-We're not yet cutting releases of Gosper and its packages. To install the Gosper
+We're not yet cutting releases of Comlab and its packages. To install the Comlab
 CLI, clone the repo and:
 
 ```
@@ -23,7 +21,7 @@ You'll need [Go](http://www.golangbootcamp.com/book/get_setup) and
 
 # Slack
 
-Join [Glider Labs Slack](http://glider-slackin.herokuapp.com/) and the `#gosper`
+Join [Glider Labs Slack](http://slack.gliderlabs.com/) and the `#comlab`
 channel to talk about the project.
 
 # License
