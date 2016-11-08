@@ -1,12 +1,12 @@
-package gosper
+package comlab
 
 import (
-	"github.com/gliderlabs/gosper/pkg/com"
+	"github.com/gliderlabs/comlab/pkg/com"
 	"github.com/spf13/cobra"
 )
 
 func init() {
-	com.Register("gosper", &struct{}{})
+	com.Register("comlab", &struct{}{})
 }
 
 type CommandProvider interface {

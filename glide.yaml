@@ -1,6 +1,6 @@
-package: github.com/gliderlabs/gosper
+package: github.com/gliderlabs/comlab
 ignore:
-- github.com/gliderlabs/gosper
+- github.com/gliderlabs/comlab
 import:
 - package: github.com/mattaitchison/bashenv
 - package: github.com/mgutz/ansi

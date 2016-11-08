@@ -1,4 +1,4 @@
-package gosper
+package comlab
 
 import (
 	"log"
@@ -7,7 +7,7 @@ import (
 )
 
 var RootCmd = &cobra.Command{
-	Short: "Gosper CLI",
+	Short: "Comlab CLI",
 }
 
 func Run() {

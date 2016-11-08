@@ -7,9 +7,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/gliderlabs/gosper/pkg/com"
-	"github.com/gliderlabs/gosper/pkg/com/viper"
-	"github.com/gliderlabs/gosper/pkg/log"
+	"github.com/gliderlabs/comlab/pkg/com"
+	"github.com/gliderlabs/comlab/pkg/com/viper"
+	"github.com/gliderlabs/comlab/pkg/log"
 	"github.com/mgutz/ansi"
 	"github.com/spf13/cast"
 	"github.com/thejerf/suture"
