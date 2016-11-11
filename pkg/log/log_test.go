@@ -21,8 +21,8 @@ func (l *logBuffer) Log(e Event) {
 	*l = append(*l, zeroTime(e))
 }
 
-func (l *logBuffer) Types() []int {
-	var types []int
+func (l *logBuffer) Types() []EventType {
+	var types []EventType
 	for _, e := range *l {
 		types = append(types, e.Type)
 	}
@@ -117,13 +117,13 @@ func TestLogTypes(t *testing.T) {
 	localDebugLogger.SetDebug(true)
 	for _, test := range []struct {
 		given *logger
-		in    []int
-		want  []int
+		in    []EventType
+		want  []EventType
 	}{
-		{given: regularLogger, in: []int{TypeInfo, TypeDebug, TypeInfo, TypeLocal, TypeFatal}, want: []int{TypeInfo, TypeInfo, TypeFatal}},
-		{given: debugLogger, in: []int{TypeInfo, TypeDebug, TypeInfo, TypeLocal, TypeFatal}, want: []int{TypeInfo, TypeDebug, TypeInfo, TypeFatal}},
-		{given: localLogger, in: []int{TypeInfo, TypeDebug, TypeInfo, TypeLocal, TypeFatal}, want: []int{TypeInfo, TypeInfo, TypeLocal, TypeFatal}},
-		{given: localDebugLogger, in: []int{TypeInfo, TypeDebug, TypeInfo, TypeLocal, TypeFatal}, want: []int{TypeInfo, TypeDebug, TypeInfo, TypeLocal, TypeFatal}},
+		{given: regularLogger, in: []EventType{TypeInfo, TypeDebug, TypeInfo, TypeLocal, TypeFatal}, want: []EventType{TypeInfo, TypeInfo, TypeFatal}},
+		{given: debugLogger, in: []EventType{TypeInfo, TypeDebug, TypeInfo, TypeLocal, TypeFatal}, want: []EventType{TypeInfo, TypeDebug, TypeInfo, TypeFatal}},
+		{given: localLogger, in: []EventType{TypeInfo, TypeDebug, TypeInfo, TypeLocal, TypeFatal}, want: []EventType{TypeInfo, TypeInfo, TypeLocal, TypeFatal}},
+		{given: localDebugLogger, in: []EventType{TypeInfo, TypeDebug, TypeInfo, TypeLocal, TypeFatal}, want: []EventType{TypeInfo, TypeDebug, TypeInfo, TypeLocal, TypeFatal}},
 	} {
 		buffer := &logBuffer{}
 		test.given.RegisterObserver(buffer)
