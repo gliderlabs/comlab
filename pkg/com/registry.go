@@ -32,7 +32,9 @@ type option struct {
 	description string
 }
 
-// Option ...
+// Option is used to create values used by Register to define configuration for
+// a component. Component options are namespaced to the name the component was
+// registered as, so no need to include extra namespacing in option names.
 func Option(name string, dfault interface{}, description string) interface{} {
 	return option{
 		name:        name,
@@ -41,6 +43,12 @@ func Option(name string, dfault interface{}, description string) interface{} {
 	}
 }
 
+// Register adds a component object to the registry as the specified name. The
+// name is usually the package name, but some package names assume the context of
+// their parent package, so package "ui" under the "web" package might be better
+// registered as "web.ui".
+//
+// Options are optional and expect values that were returned by Option.
 func Register(name string, com interface{}, options ...interface{}) {
 	defaultRegistry.Register(name, com, options...)
 }
@@ -58,6 +66,13 @@ func (r *registry) Register(name string, com interface{}, options ...interface{}
 	}
 }
 
+// Select returns a component registered with the specified name. The second
+// argument lets you optionally ensure the component implements a particular
+// interface. Specify an interface using new() on the interface type, like
+// new(Interface). It can also just be nil to not ensure an interface.
+//
+// If the selected component is not enabled or not registered, it will return
+// nil.
 func Select(name string, iface interface{}) interface{} {
 	return defaultRegistry.Select(name, iface)
 }
@@ -85,6 +100,13 @@ func (r *registry) Select(name string, iface interface{}) interface{} {
 	return com.obj
 }
 
+// Enabled returns enabled components that implement a particular
+// interface. Specify an interface using new() on the interface type, like
+// new(Interface).
+//
+// Context objects are used to let you determine if a component is enabled
+// with your own mechanisms (user profile, etc). Otherwise if nil, it will use
+// the Context of the set ConfigProvider to determine if enabled.
 func Enabled(iface interface{}, ctx Context) []interface{} {
 	return defaultRegistry.Enabled(iface, ctx)
 }
@@ -119,11 +141,14 @@ func (r *registry) Enabled(iface interface{}, ctx Context) []interface{} {
 	return coms
 }
 
+// SetConfig lets you specify the ConfigProvider to use. This should be called
+// before any calls to the config getter functions.
 func SetConfig(c ConfigProvider) { defaultRegistry.SetConfig(c) }
 func (r *registry) SetConfig(c ConfigProvider) {
 	r.config = c
 }
 
+// GetString returns a string for the named option of the calling package's component.
 func GetString(name string) string {
 	return defaultRegistry.GetString(pkgToSection(callerPkg()), name)
 }
@@ -143,6 +168,7 @@ func (r *registry) GetString(section, name string) string {
 	return ""
 }
 
+// GetInt returns an integer for the named option of the calling package's component.
 func GetInt(name string) int {
 	return defaultRegistry.GetInt(pkgToSection(callerPkg()), name)
 }
@@ -162,6 +188,7 @@ func (r *registry) GetInt(section, name string) int {
 	return 0
 }
 
+// GetBool returns a bool for the named option of the calling package's component.
 func GetBool(name string) bool {
 	return defaultRegistry.GetBool(pkgToSection(callerPkg()), name)
 }
