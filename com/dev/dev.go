@@ -2,6 +2,7 @@ package dev
 
 import (
 	"fmt"
+	"io/ioutil"
 	"log"
 	"os"
 	"os/exec"
@@ -21,7 +22,26 @@ var (
 	buildErrored = false
 )
 
-func Run(cmdName string) {
+func Run() {
+	cwd, _ := os.Getwd()
+	cmdName := filepath.Base(cwd)
+
+	// find entrypoint cmd
+	if _, err := os.Stat("cmd/" + cmdName); err != nil {
+		files, err := ioutil.ReadDir("cmd")
+		if err != nil {
+			log.Fatal(err)
+		}
+		for _, file := range files {
+			if file.IsDir() {
+				cmdName = file.Name()
+			}
+		}
+		if _, err := os.Stat("cmd/" + cmdName); err != nil {
+			log.Fatal("Unable to find entrypoint")
+		}
+	}
+
 	if _, err := os.Stat(".env"); err == nil {
 		bashenv.Source(".env")
 	}
@@ -29,7 +49,6 @@ func Run(cmdName string) {
 	if os.Getenv("GOPATH") == "" {
 		log.Fatal("GOPATH must be set")
 	}
-	cwd, _ := os.Getwd()
 	realCwd, _ := filepath.EvalSymlinks(cwd)
 	if !strings.HasPrefix(realCwd, os.Getenv("GOPATH")) {
 		log.Fatal("Must be run under GOPATH")
@@ -59,7 +78,7 @@ func Run(cmdName string) {
 
 	runner.Add(cmd)
 
-	if _, err := os.Stat("ui"); err == nil {
+	if _, err := os.Stat("ui/package.json"); err == nil {
 		webpackCmd := NewCmdService("npm", "run", "serve")
 		webpackCmd.Dir = "ui"
 		webpackCmd.Stdout = os.Stdout
