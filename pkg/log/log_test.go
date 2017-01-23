@@ -67,6 +67,32 @@ func TestBuiltinFieldProcessing(t *testing.T) {
 	}
 }
 
+type removePkg struct{}
+
+func (l *removePkg) Log(e Event) {
+	e.Remove("pkg")
+}
+
+func TestRemoveField(t *testing.T) {
+	t.Parallel()
+	for _, test := range []struct {
+		in   args
+		want Fields
+	}{
+		{in: args{"hello"}, want: Fields{"msg": "hello", "pkg": "testing"}},
+	} {
+		log := newLogger()
+		buffer := &logBuffer{}
+		buffer2 := &removePkg{}
+		log.RegisterObserver(buffer)
+		log.RegisterObserver(buffer2)
+		log.Info(test.in...)
+		if got := (*buffer)[0].Fields; !reflect.DeepEqual(got, test.want) {
+			t.Fatalf("Info(%#v) => %#v; want %#v", test.in, got, test.want)
+		}
+	}
+}
+
 func TestExtendedFieldProcessing(t *testing.T) {
 	t.Parallel()
 	fieldProcessor := func(e Event, field interface{}) (Event, bool) {
