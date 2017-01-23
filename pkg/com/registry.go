@@ -234,6 +234,9 @@ func callerPkg() string {
 
 func pkgToSection(pkg string) string {
 	parts := strings.Split(pkg, "/")
+	if parts[len(parts)-1] == "com" {
+		return parts[len(parts)-2]
+	}
 	return parts[len(parts)-1]
 }
 
